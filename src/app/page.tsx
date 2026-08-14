@@ -1,10 +1,23 @@
 import Link from "next/link";
 import AdSlot from "@/components/AdSlot";
-import { SITE_DESCRIPTION, TOOLS, UPCOMING_TOOLS } from "@/lib/site";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, TOOLS, UPCOMING_TOOLS } from "@/lib/site";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  inLanguage: "ja",
+};
 
 export default function Home() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="rounded-2xl bg-gradient-to-br from-sea-700 to-sea-900 px-6 py-10 text-white">
         <h1 className="text-2xl font-bold leading-snug sm:text-3xl">
           釣りの「換算・計算」を、
