@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 釣り便利ツール
 
-## Getting Started
+釣りに役立つ計算・換算ツールをまとめた無料サイトです。外部APIを使わず、すべてブラウザ内で計算が完結します。
 
-First, run the development server:
+## 収録ツール
+
+- PEライン号数⇔lb換算ツール (`/tools/pe-line`)
+- リーダー号数⇔lb換算ツール (`/tools/leader`)
+- タイラバ重量計算ツール (`/tools/tairaba`)
+
+## 技術構成
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS v4
+- 外部APIなし（すべてクライアント側で計算）
+- Vercel / Cloudflare Pages のどちらにもデプロイ可能な構成
+
+## 開発
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000 で確認できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ビルド
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## 環境変数
 
-To learn more about Next.js, take a look at the following resources:
+`NEXT_PUBLIC_SITE_URL` に本番ドメインを設定すると、sitemap.xml や robots.txt、OGP情報に反映されます（未設定時は `https://example.com` が使われます）。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## デプロイ
 
-## Deploy on Vercel
+### Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+GitHubリポジトリと連携し、そのままデプロイ可能です。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Cloudflare Pages
+
+`@cloudflare/next-on-pages` の利用を推奨します。詳細は [Cloudflare公式ドキュメント](https://developers.cloudflare.com/pages/framework-guides/nextjs/) を参照してください。
+
+## 今後追加予定のツール
+
+- ライン巻量計算ツール
+- オモリ号数換算ツール
+- 水深別ジグ重量目安ツール
+- 魚種別仕掛け検索
+- 釣行費用計算ツール
+
+新しいツールを追加する際は、`src/lib/` に計算ロジック、`src/components/tools/` に入力UI、`src/app/tools/<tool-name>/page.tsx` にページを追加し、`src/lib/site.ts` の `TOOLS` に登録してください。
