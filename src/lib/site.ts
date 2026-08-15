@@ -38,12 +38,26 @@ export const TOOLS: ToolInfo[] = [
     href: "/tools/tairaba",
     status: "available",
   },
+  {
+    key: "sinker",
+    title: "オモリ号数⇔g換算ツール",
+    shortTitle: "オモリ号数換算",
+    description: "オモリ(鉛)の号数とグラムを相互に変換します。",
+    href: "/tools/sinker",
+    status: "available",
+  },
+  {
+    key: "trip-cost",
+    title: "釣行費用計算ツール",
+    shortTitle: "釣行費用計算",
+    description: "ガソリン代・高速代・船代などから、釣行費用と割り勘額を計算します。",
+    href: "/tools/trip-cost",
+    status: "available",
+  },
 ];
 
 export const UPCOMING_TOOLS: string[] = [
   "ライン巻量計算ツール",
-  "オモリ号数換算ツール",
   "水深別ジグ重量目安ツール",
   "魚種別仕掛け検索",
-  "釣行費用計算ツール",
 ];
