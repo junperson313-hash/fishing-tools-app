@@ -57,7 +57,14 @@ export default function PeLinePage() {
           </p>
         </>
       }
-      affiliateSlot={<AffiliateBlock category="PEライン" keyword="PEライン" />}
+      affiliateSlot={
+        <AffiliateBlock
+          category="PEライン"
+          keyword="PEライン"
+          itemLabel="コスパ重視のPEライン"
+          itemNote="扱いやすい定番PEラインです"
+        />
+      }
       howTo={
         <p className="mt-3 text-sm leading-relaxed text-sea-600">
           手持ちのPEラインの号数、または目安にしたいlb数を早見表から探すだけです。PEラインは0.3号・0.4号・0.5号…のように決まった号数でしか販売されていないため、途中の中間値を計算する必要はありません。表の行をタップすると、その号数の商品を探すリンクが表示されます。

@@ -56,7 +56,14 @@ export default function SinkerPage() {
           </p>
         </>
       }
-      affiliateSlot={<AffiliateBlock category="オモリ" keyword="中通しオモリ" />}
+      affiliateSlot={
+        <AffiliateBlock
+          category="オモリ"
+          keyword="中通しオモリ"
+          itemLabel="船釣り用おすすめオモリ"
+          itemNote="中通しタイプの定番オモリです"
+        />
+      }
       howTo={
         <p className="mt-3 text-sm leading-relaxed text-sea-600">
           使いたいオモリの号数、または目安にしたいグラム数を早見表から探すだけです。表の行をタップすると、その号数の商品を探すリンクが表示されます。

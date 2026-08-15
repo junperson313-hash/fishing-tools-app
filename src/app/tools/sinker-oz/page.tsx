@@ -58,7 +58,12 @@ export default function SinkerOzPage() {
         </>
       }
       affiliateSlot={
-        <AffiliateBlock category="シンカー・ジグヘッド" keyword="シンカー oz" />
+        <AffiliateBlock
+          category="シンカー・ジグヘッド"
+          keyword="シンカー oz"
+          itemLabel="おすすめシンカー・ジグヘッド"
+          itemNote="海外製ルアーにも使えるシンカーです"
+        />
       }
       howTo={
         <p className="mt-3 text-sm leading-relaxed text-sea-600">

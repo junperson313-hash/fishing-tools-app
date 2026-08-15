@@ -57,7 +57,14 @@ export default function EgiPage() {
           </p>
         </>
       }
-      affiliateSlot={<AffiliateBlock category="エギ" keyword="エギ" />}
+      affiliateSlot={
+        <AffiliateBlock
+          category="エギ"
+          keyword="エギ"
+          itemLabel="おすすめエギ"
+          itemNote="定番シリーズのエギです"
+        />
+      }
       howTo={
         <p className="mt-3 text-sm leading-relaxed text-sea-600">
           使いたいエギの号数、または目安にしたい重さを早見表から探すだけです。表の行をタップすると、その号数の商品を探すリンクが表示されます。

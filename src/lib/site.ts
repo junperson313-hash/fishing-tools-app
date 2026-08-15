@@ -11,6 +11,8 @@ export type ToolInfo = {
   description: string;
   href: string;
   status: "available" | "coming-soon";
+  /** トップページのツールカードに表示する小さなバッジ(任意)。例: "🔥 よく使われています" */
+  badge?: string;
 };
 
 export const TOOLS: ToolInfo[] = [
@@ -21,6 +23,7 @@ export const TOOLS: ToolInfo[] = [
     description: "PEラインの号数とlb(ポンド)の対応が早見表でわかります。",
     href: "/tools/pe-line",
     status: "available",
+    badge: "🔥 よく使われています",
   },
   {
     key: "leader",
@@ -62,6 +65,14 @@ export const TOOLS: ToolInfo[] = [
     href: "/tools/egi",
     status: "available",
   },
+  {
+    key: "line-capacity",
+    title: "PEライン巻き量計算ツール",
+    shortTitle: "PEライン巻き量計算",
+    description: "号数を変えたときの糸巻き量(m)の目安を計算できます。",
+    href: "/tools/line-capacity",
+    status: "available",
+  },
 ];
 
 /**
@@ -73,7 +84,6 @@ export const UPCOMING_TOOLS: string[] = [
   "対象魚別PEライン号数目安",
   "対象魚別リーダー号数目安",
   "水深・潮流別ジグ重量計算",
-  "リール糸巻量計算",
   "リール下巻き量計算",
   "魚種別仕掛け検索",
 ];

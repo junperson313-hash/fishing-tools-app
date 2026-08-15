@@ -10,6 +10,13 @@ export type AffiliateBlockProps = {
   reason?: string;
   /** 楽天API検索・フォールバック検索リンクの両方に使うキーワード */
   keyword: string;
+  /**
+   * 商品カードに表示する短い商品名。楽天の商品名は長いため全文表示せず、
+   * サイト側でこの短い名前に置き換える(例: "コスパ重視のPEライン")。
+   */
+  itemLabel: string;
+  /** 商品カードに表示する一言説明。省略可 */
+  itemNote?: string;
   hits?: number;
 };
 
@@ -24,7 +31,9 @@ export default async function AffiliateBlock({
   category,
   reason,
   keyword,
-  hits = 4,
+  itemLabel,
+  itemNote,
+  hits = 3,
 }: AffiliateBlockProps) {
   const items = await searchRakutenItems(keyword, hits);
 
@@ -43,28 +52,39 @@ export default async function AffiliateBlock({
                 href={item.url}
                 category={category}
                 keyword={keyword}
-                className="flex h-full gap-3 rounded-xl border border-sea-100 bg-white p-3 transition-colors hover:border-sea-300 hover:bg-sea-50"
+                className="flex h-full flex-col gap-2 rounded-xl border border-sea-100 bg-white p-3 transition-colors hover:border-sea-300 hover:bg-sea-50"
               >
-                {item.imageUrl ? (
-                  <Image
-                    src={item.imageUrl}
-                    alt=""
-                    width={72}
-                    height={72}
-                    unoptimized
-                    className="h-[72px] w-[72px] shrink-0 rounded-lg object-cover"
-                  />
-                ) : (
-                  <div className="h-[72px] w-[72px] shrink-0 rounded-lg bg-sea-50" />
-                )}
-                <div className="min-w-0 flex-1">
-                  <p className="line-clamp-2 text-xs text-sea-700">
-                    {item.name}
-                  </p>
-                  <p className="mt-1 text-sm font-bold text-sea-900">
-                    {item.price.toLocaleString()}円
-                  </p>
+                <div className="flex gap-3">
+                  {item.imageUrl ? (
+                    <Image
+                      src={item.imageUrl}
+                      alt=""
+                      width={64}
+                      height={64}
+                      unoptimized
+                      className="h-16 w-16 shrink-0 rounded-lg object-cover"
+                    />
+                  ) : (
+                    <div className="h-16 w-16 shrink-0 rounded-lg bg-sea-50" />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-semibold text-sea-800">
+                      {itemLabel}
+                    </p>
+                    {itemNote && (
+                      <p className="mt-0.5 line-clamp-1 text-xs text-sea-500">
+                        {itemNote}
+                      </p>
+                    )}
+                    <p className="mt-1 text-sm font-bold text-sea-900">
+                      {item.price.toLocaleString()}円
+                    </p>
+                  </div>
                 </div>
+                <span className="inline-flex items-center justify-center gap-1 rounded-lg bg-sea-600 py-1.5 text-xs font-medium text-white">
+                  楽天市場で見る
+                  <span aria-hidden>›</span>
+                </span>
               </AffiliateLink>
             </li>
           ))}
@@ -84,7 +104,7 @@ export default async function AffiliateBlock({
       )}
 
       <p className="mt-2 text-xs text-sea-400">
-        楽天市場の商品情報です。価格は変動することがあります。PR/広告リンクを含みます。
+        楽天市場の商品情報です。価格は変動することがあります。PR・広告リンクを含みます。
       </p>
     </section>
   );

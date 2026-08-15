@@ -107,6 +107,8 @@ export default async function GuidePage({
       <AffiliateBlock
         category={guide.affiliateCategory}
         keyword={guide.affiliateKeyword}
+        itemLabel={guide.affiliateItemLabel}
+        itemNote={guide.affiliateItemNote}
       />
 
       {relatedTools.length > 0 && (

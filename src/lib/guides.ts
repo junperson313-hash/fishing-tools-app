@@ -14,6 +14,8 @@ export type GuideContent = {
   relatedToolKeys: string[];
   affiliateCategory: string;
   affiliateKeyword: string;
+  affiliateItemLabel: string;
+  affiliateItemNote?: string;
 };
 
 /**
@@ -46,5 +48,7 @@ export const GUIDE_CONTENTS: Record<string, GuideContent> = {
     relatedToolKeys: ["pe-line", "leader"],
     affiliateCategory: "青物用PEライン",
     affiliateKeyword: "PEライン ショアジギング",
+    affiliateItemLabel: "青物狙いにおすすめのPEライン",
+    affiliateItemNote: "高強度タイプの定番PEラインです",
   },
 };

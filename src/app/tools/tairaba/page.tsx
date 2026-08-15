@@ -41,7 +41,12 @@ export default function TairabaPage() {
       toolKey="tairaba"
       toolSlot={<TairabaCalculator />}
       affiliateSlot={
-        <AffiliateBlock category="タイラバヘッド" keyword="タイラバ ヘッド" />
+        <AffiliateBlock
+          category="タイラバヘッド"
+          keyword="タイラバ ヘッド"
+          itemLabel="タイラバ用おすすめヘッド"
+          itemNote="定番シリーズのタイラバヘッドです"
+        />
       }
       howTo={
         <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-sea-600">

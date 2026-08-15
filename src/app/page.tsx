@@ -53,6 +53,11 @@ export default function Home() {
                 className="flex items-center justify-between gap-4 rounded-2xl border border-sea-100 bg-white p-5 shadow-sm transition-colors hover:border-sea-300 hover:bg-sea-50"
               >
                 <div>
+                  {tool.badge && (
+                    <span className="mb-1 inline-block rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-medium text-accent">
+                      {tool.badge}
+                    </span>
+                  )}
                   <p className="font-semibold text-sea-900">{tool.title}</p>
                   <p className="mt-1 text-sm text-sea-500">
                     {tool.description}

@@ -57,7 +57,12 @@ export default function LeaderPage() {
         </>
       }
       affiliateSlot={
-        <AffiliateBlock category="リーダー" keyword="リーダー フロロカーボン" />
+        <AffiliateBlock
+          category="リーダー"
+          keyword="リーダー フロロカーボン"
+          itemLabel="おすすめ フロロカーボンリーダー"
+          itemNote="根ズレに強い定番リーダーです"
+        />
       }
       howTo={
         <p className="mt-3 text-sm leading-relaxed text-sea-600">
