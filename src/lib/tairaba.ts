@@ -9,22 +9,19 @@ export const CURRENT_SPEED_LABEL: Record<CurrentSpeed, string> = {
 const CURRENT_MULTIPLIER: Record<CurrentSpeed, number> = {
   slow: 0.8,
   normal: 1.0,
-  fast: 1.25,
+  fast: 1.3,
 };
 
 /**
  * 水深(m)から基準となるタイラバ重量(g)を求める。
- * 「水深10mごとに20g前後プラス」という、船釣り現場でよく使われる
- * ざっくりした目安をベースにしている。あくまで出発点の数値。
+ * 複数の釣り情報サイトで共通して紹介されている
+ * 「水深(m)×2 ≒ 重さ(g)」という目安をベースにしている
+ * (例: 水深20m→40g、水深30m→60g、水深50m→100g)。
+ * 「水深とほぼ同じg数」というより軽めの目安もあり、
+ * これはあくまで数ある目安のひとつ。
  */
 function baseWeightFromDepth(depth: number): number {
-  if (depth <= 10) return 40;
-  if (depth <= 20) return 60;
-  if (depth <= 30) return 80;
-  if (depth <= 40) return 100;
-  if (depth <= 50) return 120;
-  if (depth <= 60) return 140;
-  return 140 + Math.ceil((depth - 60) / 20) * 20;
+  return depth * 2;
 }
 
 function roundToStep(value: number, step: number): number {
