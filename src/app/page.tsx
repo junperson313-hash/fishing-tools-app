@@ -27,15 +27,15 @@ export default function Home() {
           sizes="(min-width: 768px) 768px, 100vw"
           className="object-cover object-right"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-sea-950/95 via-sea-950/75 to-sea-950/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-sea-950/70 via-transparent to-transparent" />
-        <div className="relative drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] sm:max-w-[65%]">
-          <h1 className="text-2xl font-bold leading-snug sm:text-3xl">
+        <div className="absolute inset-0 bg-gradient-to-r from-sea-950/40 via-sea-950/25 to-sea-950/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-sea-950/25 via-transparent to-transparent" />
+        <div className="relative sm:max-w-[65%]">
+          <h1 className="text-2xl font-bold leading-snug [text-shadow:0_1px_3px_rgba(0,0,0,0.75)] sm:text-3xl">
             釣りの「換算・計算」を、
             <br />
             スマホでサッと。
           </h1>
-          <p className="mt-3 text-sm leading-relaxed text-sea-100 sm:text-base">
+          <p className="mt-3 text-sm leading-relaxed text-sea-100 [text-shadow:0_1px_3px_rgba(0,0,0,0.75)] sm:text-base">
             {SITE_DESCRIPTION}
           </p>
         </div>
