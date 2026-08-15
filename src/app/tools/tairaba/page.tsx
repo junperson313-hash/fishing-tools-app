@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import TairabaCalculator from "@/components/tools/TairabaCalculator";
 import Faq from "@/components/Faq";
 import RelatedTools from "@/components/RelatedTools";
-import AdSlot from "@/components/AdSlot";
 import ProductRecommend from "@/components/ProductRecommend";
 
 const TITLE = "タイラバ重量計算ツール";
@@ -55,8 +54,6 @@ export default function TairabaPage() {
       </div>
 
       <ProductRecommend title="タイラバヘッドを探す" keyword="タイラバ ヘッド" />
-
-      <AdSlot className="mt-6" />
 
       <section aria-labelledby="how-to-heading" className="mt-8">
         <h2 id="how-to-heading" className="text-lg font-bold text-sea-900">

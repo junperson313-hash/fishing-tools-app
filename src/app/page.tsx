@@ -1,5 +1,4 @@
 import Link from "next/link";
-import AdSlot from "@/components/AdSlot";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, TOOLS, UPCOMING_TOOLS } from "@/lib/site";
 
 const jsonLd = {
@@ -57,8 +56,6 @@ export default function Home() {
           ))}
         </ul>
       </section>
-
-      <AdSlot className="mt-8" />
 
       <section aria-labelledby="upcoming-heading" className="mt-8">
         <h2 id="upcoming-heading" className="text-lg font-bold text-sea-900">

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Faq from "@/components/Faq";
 import RelatedTools from "@/components/RelatedTools";
-import AdSlot from "@/components/AdSlot";
 import ProductRecommend from "@/components/ProductRecommend";
 import { GRAMS_PER_GO, SINKER_TABLE } from "@/lib/sinker";
 
@@ -75,8 +74,6 @@ export default function SinkerPage() {
       </p>
 
       <ProductRecommend title="オモリを探す" keyword="中通しオモリ" />
-
-      <AdSlot className="mt-6" />
 
       <section aria-labelledby="how-to-heading" className="mt-8">
         <h2 id="how-to-heading" className="text-lg font-bold text-sea-900">

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Faq from "@/components/Faq";
 import RelatedTools from "@/components/RelatedTools";
-import AdSlot from "@/components/AdSlot";
 import ProductRecommend from "@/components/ProductRecommend";
 import { PE_LINE_TABLE } from "@/lib/pe-line";
 
@@ -75,8 +74,6 @@ export default function PeLinePage() {
       </p>
 
       <ProductRecommend title="PEラインを探す" keyword="PEライン" />
-
-      <AdSlot className="mt-6" />
 
       <section aria-labelledby="how-to-heading" className="mt-8">
         <h2 id="how-to-heading" className="text-lg font-bold text-sea-900">
