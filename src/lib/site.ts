@@ -105,7 +105,7 @@ export const TOOLS: ToolInfo[] = [
     key: "hook-size-guide",
     title: "フックサイズ⇔対象魚の目安表",
     shortTitle: "フックサイズ目安",
-    description: "対象魚から号数、号数から対象魚のどちらからでも釣り針の目安が探せます。",
+    description: "針の種類(袖・チヌ・丸セイゴ・伊勢尼)ごとに、対象魚⇔号数の目安が探せます。",
     href: "/tools/hook-size-guide",
     status: "available",
   },
