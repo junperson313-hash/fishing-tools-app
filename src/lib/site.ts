@@ -77,6 +77,38 @@ export const TOOLS: ToolInfo[] = [
     href: "/tools/line-capacity",
     status: "available",
   },
+  {
+    key: "pe-line-guide",
+    title: "対象魚別PEライン号数目安",
+    shortTitle: "PEライン号数目安",
+    description: "魚種・釣りジャンルを選ぶだけでPEラインとリーダーの号数目安がわかります。",
+    href: "/tools/pe-line-guide",
+    status: "available",
+  },
+  {
+    key: "line-strength-converter",
+    title: "ライン強度 kg⇔lb⇔号数 換算ツール",
+    shortTitle: "ライン強度換算",
+    description: "号数・lb・kgのどれか1つを入力すると、残り2つの目安がわかります。",
+    href: "/tools/line-strength-converter",
+    status: "available",
+  },
+  {
+    key: "rig-size-guide",
+    title: "仕掛け号数早見表",
+    shortTitle: "仕掛け号数早見表",
+    description: "サビキ・ちょい投げ等、ジャンルを選ぶと針・ハリス・道糸・オモリの号数目安がわかります。",
+    href: "/tools/rig-size-guide",
+    status: "available",
+  },
+  {
+    key: "hook-size-guide",
+    title: "フックサイズ⇔対象魚の目安表",
+    shortTitle: "フックサイズ目安",
+    description: "対象魚から号数、号数から対象魚のどちらからでも釣り針の目安が探せます。",
+    href: "/tools/hook-size-guide",
+    status: "available",
+  },
 ];
 
 /**
@@ -85,11 +117,11 @@ export const TOOLS: ToolInfo[] = [
  * 必要になる(タイラバと同水準の検証コスト)。
  */
 export const UPCOMING_TOOLS: string[] = [
-  "対象魚別PEライン号数目安",
-  "対象魚別リーダー号数目安",
   "水深・潮流別ジグ重量計算",
   "リール下巻き量計算",
-  "魚種別仕掛け検索",
+  "潮見表・タイドグラフ計算",
+  "釣行前チェックリスト",
+  "釣り場別タックル診断",
 ];
 
 export type GuideInfo = {

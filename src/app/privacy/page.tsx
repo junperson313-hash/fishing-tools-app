@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Breadcrumb from "@/components/Breadcrumb";
 import { SITE_NAME } from "@/lib/site";
 
 const TITLE = "プライバシーポリシー";
@@ -13,13 +14,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-      <nav aria-label="パンくずリスト" className="text-xs text-sea-400">
-        <a href="/" className="hover:underline">
-          トップ
-        </a>
-        <span className="mx-1">/</span>
-        <span>プライバシーポリシー</span>
-      </nav>
+      <Breadcrumb items={[{ label: "プライバシーポリシー" }]} />
 
       <h1 className="mt-2 text-2xl font-bold text-sea-900">{TITLE}</h1>
 
