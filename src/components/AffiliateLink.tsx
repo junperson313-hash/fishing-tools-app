@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { trackEvent } from "@/lib/analytics";
+import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
 
 export default function AffiliateLink({
   href,
@@ -22,7 +22,9 @@ export default function AffiliateLink({
       target="_blank"
       rel="nofollow sponsored noopener"
       className={className}
-      onClick={() => trackEvent("affiliate_click", { category, keyword })}
+      onClick={() =>
+        trackEvent(ANALYTICS_EVENTS.AFFILIATE_CLICK, { category, keyword })
+      }
     >
       {children}
     </a>

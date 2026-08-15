@@ -5,6 +5,7 @@ import { PE_LINE_TABLE } from "@/lib/pe-line";
 import { estimateLineCapacity } from "@/lib/line-capacity";
 import { rakutenSearchLink } from "@/lib/affiliate";
 import AffiliateLink from "@/components/AffiliateLink";
+import ShareButton from "@/components/ShareButton";
 
 const GO_OPTIONS = PE_LINE_TABLE.map((row) => row.x);
 
@@ -89,6 +90,14 @@ export default function LineCapacityCalculator() {
         <p className="mt-1 text-3xl font-bold text-sea-900">
           約{estimated}m
         </p>
+      </div>
+
+      <div className="mt-3 flex justify-center">
+        <ShareButton
+          toolKey="line-capacity"
+          title="PEライン巻き量計算ツール"
+          text={`PE${baseGo}号${baseMeters}mのリールなら、PE${targetGo}号は約${estimated}m巻けるみたいです`}
+        />
       </div>
 
       <div className="mt-3 flex justify-center">

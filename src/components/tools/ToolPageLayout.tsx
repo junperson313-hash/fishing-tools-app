@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import Faq, { FaqItem } from "@/components/Faq";
 import RelatedTools from "@/components/RelatedTools";
+import ToolViewTracker from "@/components/tools/ToolViewTracker";
 
 export type ToolPageLayoutProps = {
   breadcrumbLabel: string;
@@ -22,6 +23,11 @@ export type ToolPageLayoutProps = {
   toolKey: string;
   /** 関連ツールの下に追加で表示する内容(ガイドページへのリンク等)。省略可 */
   extraSlot?: ReactNode;
+  /**
+   * 広告枠。AdSense等の審査が済むまでは渡さないでおけば何も表示されず、
+   * レイアウトも変わらない(FAQと関連ツールの間に表示される)。
+   */
+  adSlot?: ReactNode;
 };
 
 /**
@@ -43,9 +49,11 @@ export default function ToolPageLayout({
   faqItems,
   toolKey,
   extraSlot,
+  adSlot,
 }: ToolPageLayoutProps) {
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+      <ToolViewTracker toolKey={toolKey} />
       <Breadcrumb items={[{ label: breadcrumbLabel }]} />
 
       <h1 className="mt-2 text-2xl font-bold text-sea-900">{title}</h1>
@@ -85,6 +93,7 @@ export default function ToolPageLayout({
       </section>
 
       <Faq items={faqItems} />
+      {adSlot && <div className="mt-8">{adSlot}</div>}
       <RelatedTools currentKey={toolKey} />
       {extraSlot}
     </div>

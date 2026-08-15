@@ -13,6 +13,10 @@ export type ToolInfo = {
   status: "available" | "coming-soon";
   /** トップページのツールカードに表示する小さなバッジ(任意)。例: "🔥 よく使われています" */
   badge?: string;
+  /** カード等に表示する絵文字アイコン(任意、現状は未使用だが登録項目として用意) */
+  icon?: string;
+  /** ツールのカテゴリ分類(任意、ツール数が増えて分類表示が必要になったら使う) */
+  category?: string;
 };
 
 export const TOOLS: ToolInfo[] = [

@@ -8,6 +8,7 @@ import {
 } from "@/lib/tairaba";
 import { rakutenSearchLink } from "@/lib/affiliate";
 import AffiliateLink from "@/components/AffiliateLink";
+import ShareButton from "@/components/ShareButton";
 
 const CURRENT_OPTIONS: CurrentSpeed[] = ["slow", "normal", "fast"];
 
@@ -69,6 +70,14 @@ export default function TairabaCalculator() {
       <div className="mt-5 rounded-xl bg-sea-50 p-4 text-center">
         <p className="text-sm text-sea-600">タイラバ重量の目安</p>
         <p className="mt-1 text-3xl font-bold text-sea-900">{band[current]}</p>
+      </div>
+
+      <div className="mt-3 flex justify-center">
+        <ShareButton
+          toolKey="tairaba"
+          title="タイラバ重量計算ツール"
+          text={`水深${band.label}・潮の速さ「${CURRENT_SPEED_LABEL[current]}」でのタイラバ重量の目安は${band[current]}でした`}
+        />
       </div>
 
       <div className="mt-3 flex flex-wrap justify-center gap-2">
