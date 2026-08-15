@@ -46,10 +46,80 @@ export const TOOLS: ToolInfo[] = [
     href: "/tools/sinker",
     status: "available",
   },
+  {
+    key: "sinker-oz",
+    title: "シンカー oz⇔g⇔号 換算 早見表",
+    shortTitle: "シンカーoz換算",
+    description: "海外シンカー・ジグヘッドのoz表記とg・号数の対応が早見表でわかります。",
+    href: "/tools/sinker-oz",
+    status: "available",
+  },
+  {
+    key: "egi",
+    title: "エギ号数⇔重量 早見表",
+    shortTitle: "エギ号数換算",
+    description: "エギングのエギの号数と重さの目安が早見表でわかります。",
+    href: "/tools/egi",
+    status: "available",
+  },
 ];
 
+/**
+ * 今後追加予定のツール(優先順位順)。
+ * 中〜低優先度のものは、追加時に個別のWeb検索による裏取りが
+ * 必要になる(タイラバと同水準の検証コスト)。
+ */
 export const UPCOMING_TOOLS: string[] = [
-  "ライン巻量計算ツール",
-  "水深別ジグ重量目安ツール",
+  "対象魚別PEライン号数目安",
+  "対象魚別リーダー号数目安",
+  "水深・潮流別ジグ重量計算",
+  "リール糸巻量計算",
+  "リール下巻き量計算",
   "魚種別仕掛け検索",
+];
+
+export type GuideInfo = {
+  slug: string;
+  title: string;
+  question: string;
+  status: "available" | "coming-soon";
+};
+
+/**
+ * 「PE1号に合うリーダーは何号？」のような、購入意欲の高い
+ * ロングテールQ&Aページ。/guides/[slug] で公開する。
+ * 水増しした薄いページを量産しないため、公開は実際に中身のある
+ * ものだけに絞り、残りはロードマップとしてここに残す。
+ */
+export const GUIDES: GuideInfo[] = [
+  {
+    slug: "aomono-pe-line",
+    title: "青物用PEラインは何号？",
+    question: "青物用PEラインは何号？",
+    status: "available",
+  },
+  {
+    slug: "pe1-leader",
+    title: "PE1号に合うリーダーは何号？",
+    question: "PE1号に合うリーダーは何号？",
+    status: "coming-soon",
+  },
+  {
+    slug: "suishin60-tairaba",
+    title: "水深60mのタイラバは何g？",
+    question: "水深60mのタイラバは何g？",
+    status: "coming-soon",
+  },
+  {
+    slug: "eging-leader",
+    title: "エギングのリーダーは何号？",
+    question: "エギングのリーダーは何号？",
+    status: "coming-soon",
+  },
+  {
+    slug: "shore-jigging-pe",
+    title: "ショアジギングのPEラインは何号？",
+    question: "ショアジギングのPEラインは何号？",
+    status: "coming-soon",
+  },
 ];

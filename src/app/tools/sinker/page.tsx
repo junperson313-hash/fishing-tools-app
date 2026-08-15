@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Faq from "@/components/Faq";
-import RelatedTools from "@/components/RelatedTools";
-import ProductRecommend from "@/components/ProductRecommend";
+import ToolPageLayout from "@/components/tools/ToolPageLayout";
+import SelectableTable from "@/components/tools/SelectableTable";
+import AffiliateBlock from "@/components/AffiliateBlock";
 import { GRAMS_PER_GO, SINKER_TABLE } from "@/lib/sinker";
 
 const TITLE = "オモリ号数⇔g換算 早見表";
@@ -35,66 +35,40 @@ const FAQ_ITEMS = [
 
 export default function SinkerPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-      <nav aria-label="パンくずリスト" className="text-xs text-sea-400">
-        <a href="/" className="hover:underline">
-          トップ
-        </a>
-        <span className="mx-1">/</span>
-        <span>オモリ号数換算</span>
-      </nav>
-
-      <h1 className="mt-2 text-2xl font-bold text-sea-900">{TITLE}</h1>
-      <p className="mt-2 text-sm leading-relaxed text-sea-600">
-        {DESCRIPTION}
-      </p>
-
-      <div className="mt-6 overflow-x-auto rounded-2xl border border-sea-100 bg-white shadow-sm">
-        <table className="w-full text-sm">
-          <thead className="bg-sea-50 text-sea-700">
-            <tr>
-              <th className="px-4 py-3 text-left font-medium">号数</th>
-              <th className="px-4 py-3 text-left font-medium">g</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-sea-100">
-            {SINKER_TABLE.map((row) => (
-              <tr key={row.go}>
-                <td className="px-4 py-3 font-medium text-sea-800">
-                  {row.go}号
-                </td>
-                <td className="px-4 py-3 text-sea-700">{row.gram}g</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="mt-3 text-xs leading-relaxed text-sea-400">
-        ※ 1号=3.75g(匁)という業界共通の基準で計算しています。ごく一部の特殊な製品では表記が異なる場合があるため、購入前にパッケージも確認してください。
-      </p>
-
-      <ProductRecommend title="オモリを探す" keyword="中通しオモリ" />
-
-      <section aria-labelledby="how-to-heading" className="mt-8">
-        <h2 id="how-to-heading" className="text-lg font-bold text-sea-900">
-          使い方
-        </h2>
+    <ToolPageLayout
+      breadcrumbLabel="オモリ号数換算"
+      title={TITLE}
+      description={DESCRIPTION}
+      toolKey="sinker"
+      toolSlot={
+        <>
+          <SelectableTable
+            category="オモリ"
+            columns={["号数", "g"]}
+            rows={SINKER_TABLE.map((row) => ({
+              key: String(row.go),
+              cells: [`${row.go}号`, `${row.gram}g`],
+              keyword: `オモリ ${row.go}号`,
+            }))}
+          />
+          <p className="mt-3 text-xs leading-relaxed text-sea-400">
+            ※ 1号=3.75g(匁)という業界共通の基準で計算しています。ごく一部の特殊な製品では表記が異なる場合があるため、購入前にパッケージも確認してください。
+          </p>
+        </>
+      }
+      affiliateSlot={<AffiliateBlock category="オモリ" keyword="中通しオモリ" />}
+      howTo={
         <p className="mt-3 text-sm leading-relaxed text-sea-600">
-          使いたいオモリの号数、または目安にしたいグラム数を早見表から探すだけです。
+          使いたいオモリの号数、または目安にしたいグラム数を早見表から探すだけです。表の行をタップすると、その号数の商品を探すリンクが表示されます。
         </p>
-      </section>
-
-      <section aria-labelledby="explain-heading" className="mt-8">
-        <h2 id="explain-heading" className="text-lg font-bold text-sea-900">
-          オモリの号数について
-        </h2>
-        <p className="mt-2 text-sm leading-relaxed text-sea-600">
+      }
+      explanationHeading="オモリの号数について"
+      explanationBody={
+        <p>
           オモリの号数は「1号={GRAMS_PER_GO}g」という固定の基準で決まっており、ラインの号数のようにメーカーによるブレはほとんどありません。仕掛け図やタックル指定で号数とg表記が混在していても、この換算式を使えば正確に対応関係を求められます。
         </p>
-      </section>
-
-      <Faq items={FAQ_ITEMS} />
-      <RelatedTools currentKey="sinker" />
-    </div>
+      }
+      faqItems={FAQ_ITEMS}
+    />
   );
 }

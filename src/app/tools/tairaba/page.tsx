@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
+import ToolPageLayout from "@/components/tools/ToolPageLayout";
 import TairabaCalculator from "@/components/tools/TairabaCalculator";
-import Faq from "@/components/Faq";
-import RelatedTools from "@/components/RelatedTools";
-import ProductRecommend from "@/components/ProductRecommend";
+import AffiliateBlock from "@/components/AffiliateBlock";
 
 const TITLE = "タイラバ重量計算ツール";
 const DESCRIPTION =
@@ -35,57 +34,32 @@ const FAQ_ITEMS = [
 
 export default function TairabaPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-      <nav aria-label="パンくずリスト" className="text-xs text-sea-400">
-        <a href="/" className="hover:underline">
-          トップ
-        </a>
-        <span className="mx-1">/</span>
-        <span>タイラバ重量計算</span>
-      </nav>
-
-      <h1 className="mt-2 text-2xl font-bold text-sea-900">{TITLE}</h1>
-      <p className="mt-2 text-sm leading-relaxed text-sea-600">
-        {DESCRIPTION}
-      </p>
-
-      <div className="mt-6">
-        <TairabaCalculator />
-      </div>
-
-      <ProductRecommend title="タイラバヘッドを探す" keyword="タイラバ ヘッド" />
-
-      <section aria-labelledby="how-to-heading" className="mt-8">
-        <h2 id="how-to-heading" className="text-lg font-bold text-sea-900">
-          使い方
-        </h2>
+    <ToolPageLayout
+      breadcrumbLabel="タイラバ重量計算"
+      title={TITLE}
+      description={DESCRIPTION}
+      toolKey="tairaba"
+      toolSlot={<TairabaCalculator />}
+      affiliateSlot={
+        <AffiliateBlock category="タイラバヘッド" keyword="タイラバ ヘッド" />
+      }
+      howTo={
         <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-sea-600">
           <li>ポイントの「水深帯」を、〜20m〜80〜100mの5段階から選びます。</li>
           <li>その日の「潮の速さ」を、遅い・普通・速いから選びます。</li>
-          <li>重さの目安と、全パターンの早見表が表示されます。</li>
+          <li>
+            重さの目安と、全パターンの早見表、その重さの商品を探すリンクが表示されます。
+          </li>
         </ol>
-      </section>
-
-      <section aria-labelledby="notice-heading" className="mt-8">
-        <h2 id="notice-heading" className="text-lg font-bold text-sea-900">
-          ご注意
-        </h2>
-        <p className="mt-2 rounded-xl border border-accent/30 bg-accent/10 p-4 text-sm leading-relaxed text-sea-700">
-          タイラバの重量に絶対的な正解はありません。この計算結果はあくまで目安であり、潮流・水深・船の流し方・地域や船宿の方針によって適切な重さは変わります。乗船前や釣行中は、船長や周りのアングラーの状況も参考にしてください。
-        </p>
-      </section>
-
-      <section aria-labelledby="explain-heading" className="mt-8">
-        <h2 id="explain-heading" className="text-lg font-bold text-sea-900">
-          タイラバの重さ選びの考え方
-        </h2>
-        <p className="mt-2 text-sm leading-relaxed text-sea-600">
+      }
+      notice="タイラバの重量に絶対的な正解はありません。この計算結果はあくまで目安であり、潮流・水深・船の流し方・地域や船宿の方針によって適切な重さは変わります。乗船前や釣行中は、船長や周りのアングラーの状況も参考にしてください。"
+      explanationHeading="タイラバの重さ選びの考え方"
+      explanationBody={
+        <p>
           タイラバは着底とその後の一定速度での巻き上げが重要な釣りです。軽すぎると仕掛けが流されて底が取りにくく、重すぎると不自然な動きになったり根がかりが増えたりします。このツールの早見表は、水深帯(〜20m/20〜40m/40〜60m/60〜80m/80〜100m)ごとに「遅い・普通・速い」の3パターンをまとめたものです。水深が深くなるほど、重さの増え方は緩やかになっていく点が特徴です。まずはこの目安から始め、着底までの時間やラインの角度を見ながら、その日の潮に合わせて軽く・重く調整していくのが基本的な考え方です。
         </p>
-      </section>
-
-      <Faq items={FAQ_ITEMS} />
-      <RelatedTools currentKey="tairaba" />
-    </div>
+      }
+      faqItems={FAQ_ITEMS}
+    />
   );
 }

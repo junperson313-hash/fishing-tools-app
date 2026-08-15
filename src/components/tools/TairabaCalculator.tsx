@@ -6,8 +6,16 @@ import {
   CurrentSpeed,
   TAIRABA_BANDS,
 } from "@/lib/tairaba";
+import { rakutenSearchLink } from "@/lib/affiliate";
+import AffiliateLink from "@/components/AffiliateLink";
 
 const CURRENT_OPTIONS: CurrentSpeed[] = ["slow", "normal", "fast"];
+
+/** "80〜100g"や"20g以下"のような表示文字列から、含まれるg数値を重複なく取り出す */
+function extractWeights(label: string): number[] {
+  const matches = label.match(/\d+/g) ?? [];
+  return Array.from(new Set(matches.map(Number)));
+}
 
 export default function TairabaCalculator() {
   const [bandKey, setBandKey] = useState(TAIRABA_BANDS[2].key);
@@ -61,6 +69,20 @@ export default function TairabaCalculator() {
       <div className="mt-5 rounded-xl bg-sea-50 p-4 text-center">
         <p className="text-sm text-sea-600">タイラバ重量の目安</p>
         <p className="mt-1 text-3xl font-bold text-sea-900">{band[current]}</p>
+      </div>
+
+      <div className="mt-3 flex flex-wrap justify-center gap-2">
+        {extractWeights(band[current]).map((weight) => (
+          <AffiliateLink
+            key={weight}
+            href={rakutenSearchLink(`タイラバ ヘッド ${weight}g`)}
+            category="タイラバヘッド"
+            keyword={`タイラバ ヘッド ${weight}g`}
+            className="rounded-full border border-sea-200 bg-white px-4 py-1.5 text-xs text-sea-700 transition-colors hover:border-sea-300 hover:bg-sea-50"
+          >
+            楽天市場で{weight}gタイラバを探す →
+          </AffiliateLink>
+        ))}
       </div>
 
       <div className="mt-5 overflow-x-auto rounded-xl border border-sea-100">
