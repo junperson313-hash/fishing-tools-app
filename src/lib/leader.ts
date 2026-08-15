@@ -1,4 +1,4 @@
-import { interpolateTable, roundTo, TablePoint } from "./convert";
+import { TablePoint } from "./convert";
 
 /**
  * リーダー（フロロカーボン・ナイロン）の 号数 ⇔ lb 目安対応表。
@@ -27,11 +27,3 @@ export const LEADER_TABLE: TablePoint[] = [
   { x: 16, y: 50 },
   { x: 20, y: 60 },
 ];
-
-export function goToLb(go: number): number {
-  return roundTo(interpolateTable(LEADER_TABLE, go, "xToY"), 1);
-}
-
-export function lbToGo(lb: number): number {
-  return roundTo(interpolateTable(LEADER_TABLE, lb, "yToX"), 2);
-}

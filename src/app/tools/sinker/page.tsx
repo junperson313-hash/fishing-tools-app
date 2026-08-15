@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import SinkerCalculator from "@/components/tools/SinkerCalculator";
 import Faq from "@/components/Faq";
 import RelatedTools from "@/components/RelatedTools";
 import AdSlot from "@/components/AdSlot";
-import { GRAMS_PER_GO, SINKER_QUICK_TABLE, goToGram } from "@/lib/sinker";
+import { GRAMS_PER_GO, SINKER_TABLE } from "@/lib/sinker";
 
-const TITLE = "オモリ号数⇔g換算ツール";
+const TITLE = "オモリ号数⇔g換算 早見表";
 const DESCRIPTION =
-  "オモリ(鉛)の号数とグラム(g)を相互に変換できる無料ツールです。1号=3.75gの基準で正確に計算します。";
+  "オモリ(鉛)の号数とグラム(g)の対応がひと目でわかる早見表です。1号=3.75gの基準で正確に計算しています。";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -50,9 +49,29 @@ export default function SinkerPage() {
         {DESCRIPTION}
       </p>
 
-      <div className="mt-6">
-        <SinkerCalculator />
+      <div className="mt-6 overflow-x-auto rounded-2xl border border-sea-100 bg-white shadow-sm">
+        <table className="w-full text-sm">
+          <thead className="bg-sea-50 text-sea-700">
+            <tr>
+              <th className="px-4 py-3 text-left font-medium">号数</th>
+              <th className="px-4 py-3 text-left font-medium">g</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-sea-100">
+            {SINKER_TABLE.map((row) => (
+              <tr key={row.go}>
+                <td className="px-4 py-3 font-medium text-sea-800">
+                  {row.go}号
+                </td>
+                <td className="px-4 py-3 text-sea-700">{row.gram}g</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+      <p className="mt-3 text-xs leading-relaxed text-sea-400">
+        ※ 1号=3.75g(匁)という業界共通の基準で計算しています。ごく一部の特殊な製品では表記が異なる場合があるため、購入前にパッケージも確認してください。
+      </p>
 
       <AdSlot className="mt-6" />
 
@@ -60,35 +79,9 @@ export default function SinkerPage() {
         <h2 id="how-to-heading" className="text-lg font-bold text-sea-900">
           使い方
         </h2>
-        <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-sea-600">
-          <li>「号数」欄に、使いたいオモリの号数を入力します。</li>
-          <li>自動的に「重さ(g)」欄にグラム数が表示されます。</li>
-          <li>逆に、gを入力すれば号数を確認できます。</li>
-        </ol>
-      </section>
-
-      <section aria-labelledby="table-heading" className="mt-8">
-        <h2 id="table-heading" className="text-lg font-bold text-sea-900">
-          オモリ号数⇔g 早見表
-        </h2>
-        <div className="mt-3 overflow-x-auto rounded-xl border border-sea-100">
-          <table className="w-full min-w-[280px] text-sm">
-            <thead className="bg-sea-50 text-sea-700">
-              <tr>
-                <th className="px-4 py-2 text-left font-medium">号数</th>
-                <th className="px-4 py-2 text-left font-medium">g</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-sea-100">
-              {SINKER_QUICK_TABLE.map((go) => (
-                <tr key={go}>
-                  <td className="px-4 py-2 text-sea-800">{go}号</td>
-                  <td className="px-4 py-2 text-sea-800">{goToGram(go)}g</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <p className="mt-3 text-sm leading-relaxed text-sea-600">
+          使いたいオモリの号数、または目安にしたいグラム数を早見表から探すだけです。
+        </p>
       </section>
 
       <section aria-labelledby="explain-heading" className="mt-8">

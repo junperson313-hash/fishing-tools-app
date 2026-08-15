@@ -1,4 +1,4 @@
-import { interpolateTable, roundTo, TablePoint } from "./convert";
+import { TablePoint } from "./convert";
 
 /**
  * PEライン 号数 ⇔ lb（ポンド）の目安対応表。
@@ -29,11 +29,3 @@ export const PE_LINE_TABLE: TablePoint[] = [
   { x: 8, y: 100 },
   { x: 10, y: 130 },
 ];
-
-export function goToLb(go: number): number {
-  return roundTo(interpolateTable(PE_LINE_TABLE, go, "xToY"), 1);
-}
-
-export function lbToGo(lb: number): number {
-  return roundTo(interpolateTable(PE_LINE_TABLE, lb, "yToX"), 2);
-}

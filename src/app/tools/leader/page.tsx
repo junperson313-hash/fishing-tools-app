@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import LeaderCalculator from "@/components/tools/LeaderCalculator";
 import Faq from "@/components/Faq";
 import RelatedTools from "@/components/RelatedTools";
 import AdSlot from "@/components/AdSlot";
 import { LEADER_TABLE } from "@/lib/leader";
 
-const TITLE = "リーダー号数⇔lb換算ツール";
+const TITLE = "リーダー号数⇔lb換算 早見表";
 const DESCRIPTION =
-  "フロロカーボン・ナイロンリーダーの号数とlb(ポンド)を相互に変換できる無料ツールです。早見表付き。";
+  "フロロカーボン・ナイロンリーダーの号数とlb(ポンド)の対応がひと目でわかる早見表です。";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -50,9 +49,29 @@ export default function LeaderPage() {
         {DESCRIPTION}
       </p>
 
-      <div className="mt-6">
-        <LeaderCalculator />
+      <div className="mt-6 overflow-x-auto rounded-2xl border border-sea-100 bg-white shadow-sm">
+        <table className="w-full text-sm">
+          <thead className="bg-sea-50 text-sea-700">
+            <tr>
+              <th className="px-4 py-3 text-left font-medium">号数</th>
+              <th className="px-4 py-3 text-left font-medium">lb(目安)</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-sea-100">
+            {LEADER_TABLE.map((row) => (
+              <tr key={row.x}>
+                <td className="px-4 py-3 font-medium text-sea-800">
+                  {row.x}号
+                </td>
+                <td className="px-4 py-3 text-sea-700">{row.y}lb</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+      <p className="mt-3 text-xs leading-relaxed text-sea-400">
+        ※ 表示される数値は目安です。フロロカーボンとナイロンでも強度は異なり、メーカーによっても差があります。購入前は必ずパッケージ記載の数値を確認してください。
+      </p>
 
       <AdSlot className="mt-6" />
 
@@ -60,35 +79,9 @@ export default function LeaderPage() {
         <h2 id="how-to-heading" className="text-lg font-bold text-sea-900">
           使い方
         </h2>
-        <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-sea-600">
-          <li>「号数」欄に、手持ちのリーダーの号数を入力します。</li>
-          <li>自動的に「強力(lb)」欄に目安のlb数が表示されます。</li>
-          <li>逆に、lbを入力すれば号数の目安を確認できます。</li>
-        </ol>
-      </section>
-
-      <section aria-labelledby="table-heading" className="mt-8">
-        <h2 id="table-heading" className="text-lg font-bold text-sea-900">
-          リーダー号数⇔lb 早見表
-        </h2>
-        <div className="mt-3 overflow-x-auto rounded-xl border border-sea-100">
-          <table className="w-full min-w-[280px] text-sm">
-            <thead className="bg-sea-50 text-sea-700">
-              <tr>
-                <th className="px-4 py-2 text-left font-medium">号数</th>
-                <th className="px-4 py-2 text-left font-medium">lb(目安)</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-sea-100">
-              {LEADER_TABLE.map((row) => (
-                <tr key={row.x}>
-                  <td className="px-4 py-2 text-sea-800">{row.x}号</td>
-                  <td className="px-4 py-2 text-sea-800">{row.y}lb</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <p className="mt-3 text-sm leading-relaxed text-sea-600">
+          手持ちのリーダーの号数、または目安にしたいlb数を早見表から探すだけです。リーダーも0.8号・1号・1.2号…のように決まった号数でしか販売されていないため、途中の中間値を計算する必要はありません。
+        </p>
       </section>
 
       <section aria-labelledby="explain-heading" className="mt-8">
