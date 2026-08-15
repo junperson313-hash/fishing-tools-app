@@ -15,7 +15,6 @@ export function rakutenSearchLink(keyword: string): string {
     return searchUrl;
   }
 
-  return `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(
-    searchUrl
-  )}&link_type=hybrid_url&ut=${encodeURIComponent(searchUrl)}`;
+  const encoded = encodeURIComponent(searchUrl);
+  return `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encoded}&m=${encoded}`;
 }
