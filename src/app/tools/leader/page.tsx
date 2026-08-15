@@ -74,13 +74,7 @@ export default function LeaderPage() {
         ※ 表示される数値は目安です。フロロカーボンとナイロンでも強度は異なり、メーカーによっても差があります。購入前は必ずパッケージ記載の数値を確認してください。
       </p>
 
-      <ProductRecommend
-        title="リーダーを探す"
-        links={[
-          { label: "フロロカーボンリーダーを探す", keyword: "リーダー フロロカーボン" },
-          { label: "ナイロンリーダーを探す", keyword: "リーダー ナイロン" },
-        ]}
-      />
+      <ProductRecommend title="リーダーを探す" keyword="リーダー フロロカーボン" />
 
       <AdSlot className="mt-6" />
 

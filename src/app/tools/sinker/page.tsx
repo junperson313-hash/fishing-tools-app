@@ -74,13 +74,7 @@ export default function SinkerPage() {
         ※ 1号=3.75g(匁)という業界共通の基準で計算しています。ごく一部の特殊な製品では表記が異なる場合があるため、購入前にパッケージも確認してください。
       </p>
 
-      <ProductRecommend
-        title="オモリを探す"
-        links={[
-          { label: "中通しオモリを探す", keyword: "中通しオモリ" },
-          { label: "オモリ 鉛を探す", keyword: "オモリ 鉛" },
-        ]}
-      />
+      <ProductRecommend title="オモリを探す" keyword="中通しオモリ" />
 
       <AdSlot className="mt-6" />
 

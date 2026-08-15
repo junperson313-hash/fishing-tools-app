@@ -74,15 +74,7 @@ export default function PeLinePage() {
         ※ 表示される数値は目安です。同じ号数でもメーカーやグレード(4本組・8本組など)によって実際の強力は変わります。購入前は必ずパッケージ記載の数値を確認してください。
       </p>
 
-      <ProductRecommend
-        title="PEラインを探す"
-        links={[
-          { label: "PEライン 1号を探す", keyword: "PEライン 1号" },
-          { label: "PEライン 1.5号を探す", keyword: "PEライン 1.5号" },
-          { label: "PEライン 2号を探す", keyword: "PEライン 2号" },
-          { label: "PEライン全般を探す", keyword: "PEライン" },
-        ]}
-      />
+      <ProductRecommend title="PEラインを探す" keyword="PEライン" />
 
       <AdSlot className="mt-6" />
 

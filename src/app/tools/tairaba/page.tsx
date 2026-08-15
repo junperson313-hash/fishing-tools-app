@@ -54,14 +54,7 @@ export default function TairabaPage() {
         <TairabaCalculator />
       </div>
 
-      <ProductRecommend
-        title="タイラバヘッドを探す"
-        links={[
-          { label: "タイラバ 60g前後を探す", keyword: "タイラバ ヘッド 60g" },
-          { label: "タイラバ 100g前後を探す", keyword: "タイラバ ヘッド 100g" },
-          { label: "タイラバセットを探す", keyword: "タイラバ セット" },
-        ]}
-      />
+      <ProductRecommend title="タイラバヘッドを探す" keyword="タイラバ ヘッド" />
 
       <AdSlot className="mt-6" />
 
