@@ -46,14 +46,6 @@ export const TOOLS: ToolInfo[] = [
     href: "/tools/sinker",
     status: "available",
   },
-  {
-    key: "trip-cost",
-    title: "釣行費用計算ツール",
-    shortTitle: "釣行費用計算",
-    description: "ガソリン代・高速代・船代などから、釣行費用と割り勘額を計算します。",
-    href: "/tools/trip-cost",
-    status: "available",
-  },
 ];
 
 export const UPCOMING_TOOLS: string[] = [
