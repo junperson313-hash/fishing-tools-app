@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, TOOLS, UPCOMING_TOOLS } from "@/lib/site";
 
@@ -17,15 +18,26 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="rounded-2xl bg-gradient-to-br from-sea-700 to-sea-900 px-6 py-10 text-white">
-        <h1 className="text-2xl font-bold leading-snug sm:text-3xl">
-          釣りの「換算・計算」を、
-          <br />
-          スマホでサッと。
-        </h1>
-        <p className="mt-3 text-sm leading-relaxed text-sea-100 sm:text-base">
-          {SITE_DESCRIPTION}
-        </p>
+      <section className="relative overflow-hidden rounded-2xl px-6 py-10 text-white">
+        <Image
+          src="/images/hero-fish.png"
+          alt=""
+          fill
+          priority
+          sizes="(min-width: 768px) 768px, 100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-sea-950/90 via-sea-900/60 to-sea-900/20" />
+        <div className="relative">
+          <h1 className="text-2xl font-bold leading-snug sm:text-3xl">
+            釣りの「換算・計算」を、
+            <br />
+            スマホでサッと。
+          </h1>
+          <p className="mt-3 text-sm leading-relaxed text-sea-100 sm:text-base">
+            {SITE_DESCRIPTION}
+          </p>
+        </div>
       </section>
 
       <section aria-labelledby="tools-heading" className="mt-8">
