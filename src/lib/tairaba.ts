@@ -1,5 +1,3 @@
-import { interpolateTable, roundTo, TablePoint } from "./convert";
-
 export type CurrentSpeed = "slow" | "normal" | "fast";
 
 export const CURRENT_SPEED_LABEL: Record<CurrentSpeed, string> = {
@@ -8,76 +6,30 @@ export const CURRENT_SPEED_LABEL: Record<CurrentSpeed, string> = {
   fast: "速い",
 };
 
+export type TairabaBand = {
+  key: string;
+  label: string;
+  slow: string;
+  normal: string;
+  fast: string;
+};
+
 /**
- * 水深(m)ごとのタイラバ重量(g)目安。
+ * 水深の帯(バンド)ごとのタイラバ重量の目安。
  * 瀬戸内エリアの釣り情報サイトが公開している「水深×潮の速さ」の
- * 早見表(20/40/60/80/100m刻み)をもとにした、3段階(遅い/普通/速い)の
- * 対応表。大手釣具チェーン「釣具のポイント」の解説記事にある
- * 「40〜80gは浅場、60〜100gがスタンダード、150g以上は深場・早潮」
- * という大まかな区分ともこの表の値は矛盾しない。
+ * 早見表(〜20m/20〜40m/40〜60m/60〜80m/80〜100m)をそのまま採用。
+ * 大手釣具チェーン「釣具のポイント」の「40〜80gは浅場、60〜100gが
+ * スタンダード、150g以上は深場・早潮」という区分とも矛盾しない。
  *
- * 「水深(m)×2 ≒ 重さ(g)」という単純な比例式は、実際には水深が
- * 深くなるほど成り立たなくなり(重さの伸びが緩やかになる)ため、
- * 単純な掛け算ではなく、実測に近い値を段階的に補間する方式にしている。
+ * 以前はこの帯データを1m単位の数値に補間して連続的に見せていたが、
+ * 実際の釣行で水深を1m単位で気にする人はいないうえ、根拠のない
+ * 補間区間(特に浅場)で不自然な傾きが出る問題があったため撤廃し、
+ * 情報源にある帯そのままの数値を表示する方式にした。
  */
-const SLOW_TABLE: TablePoint[] = [
-  { x: 10, y: 10 },
-  { x: 20, y: 20 },
-  { x: 40, y: 40 },
-  { x: 60, y: 60 },
-  { x: 80, y: 80 },
-  { x: 100, y: 100 },
-  { x: 120, y: 120 },
+export const TAIRABA_BANDS: TairabaBand[] = [
+  { key: "20", label: "〜20m", slow: "20g以下", normal: "20〜30g", fast: "40〜60g" },
+  { key: "20-40", label: "20〜40m", slow: "30〜40g", normal: "40〜60g", fast: "60〜80g" },
+  { key: "40-60", label: "40〜60m", slow: "60g", normal: "60〜80g", fast: "80〜100g" },
+  { key: "60-80", label: "60〜80m", slow: "80g", normal: "80〜100g", fast: "100〜120g" },
+  { key: "80-100", label: "80〜100m", slow: "100g", normal: "100〜120g", fast: "130〜150g" },
 ];
-
-const NORMAL_TABLE: TablePoint[] = [
-  { x: 10, y: 15 },
-  { x: 20, y: 30 },
-  { x: 40, y: 60 },
-  { x: 60, y: 80 },
-  { x: 80, y: 100 },
-  { x: 100, y: 120 },
-  { x: 120, y: 140 },
-];
-
-const FAST_TABLE: TablePoint[] = [
-  { x: 10, y: 30 },
-  { x: 20, y: 60 },
-  { x: 40, y: 80 },
-  { x: 60, y: 100 },
-  { x: 80, y: 120 },
-  { x: 100, y: 150 },
-  { x: 120, y: 180 },
-];
-
-const TABLE_BY_CURRENT: Record<CurrentSpeed, TablePoint[]> = {
-  slow: SLOW_TABLE,
-  normal: NORMAL_TABLE,
-  fast: FAST_TABLE,
-};
-
-function roundToStep(value: number, step: number): number {
-  return Math.max(step, Math.round(value / step) * step);
-}
-
-export type TairabaResult = {
-  recommended: number;
-  min: number;
-  max: number;
-};
-
-export function calcTairabaWeight(
-  depth: number,
-  current: CurrentSpeed
-): TairabaResult {
-  const table = TABLE_BY_CURRENT[current];
-  const base = interpolateTable(table, depth, "xToY");
-  const recommended = roundToStep(base, 10);
-  const min = roundToStep(base * 0.85, 10);
-  const max = roundToStep(base * 1.2, 10);
-  return {
-    recommended: roundTo(recommended, 0),
-    min: roundTo(min, 0),
-    max: roundTo(max, 0),
-  };
-}
