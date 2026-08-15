@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Faq from "@/components/Faq";
 import RelatedTools from "@/components/RelatedTools";
 import AdSlot from "@/components/AdSlot";
+import ProductRecommend from "@/components/ProductRecommend";
 import { GRAMS_PER_GO, SINKER_TABLE } from "@/lib/sinker";
 
 const TITLE = "オモリ号数⇔g換算 早見表";
@@ -72,6 +73,14 @@ export default function SinkerPage() {
       <p className="mt-3 text-xs leading-relaxed text-sea-400">
         ※ 1号=3.75g(匁)という業界共通の基準で計算しています。ごく一部の特殊な製品では表記が異なる場合があるため、購入前にパッケージも確認してください。
       </p>
+
+      <ProductRecommend
+        title="オモリを探す"
+        links={[
+          { label: "中通しオモリを探す", keyword: "中通しオモリ" },
+          { label: "オモリ 鉛を探す", keyword: "オモリ 鉛" },
+        ]}
+      />
 
       <AdSlot className="mt-6" />
 

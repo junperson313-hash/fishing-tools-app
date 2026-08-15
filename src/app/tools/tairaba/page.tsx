@@ -3,6 +3,7 @@ import TairabaCalculator from "@/components/tools/TairabaCalculator";
 import Faq from "@/components/Faq";
 import RelatedTools from "@/components/RelatedTools";
 import AdSlot from "@/components/AdSlot";
+import ProductRecommend from "@/components/ProductRecommend";
 
 const TITLE = "タイラバ重量計算ツール";
 const DESCRIPTION =
@@ -52,6 +53,15 @@ export default function TairabaPage() {
       <div className="mt-6">
         <TairabaCalculator />
       </div>
+
+      <ProductRecommend
+        title="タイラバヘッドを探す"
+        links={[
+          { label: "タイラバ 60g前後を探す", keyword: "タイラバ ヘッド 60g" },
+          { label: "タイラバ 100g前後を探す", keyword: "タイラバ ヘッド 100g" },
+          { label: "タイラバセットを探す", keyword: "タイラバ セット" },
+        ]}
+      />
 
       <AdSlot className="mt-6" />
 

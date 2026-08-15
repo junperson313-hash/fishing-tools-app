@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Faq from "@/components/Faq";
 import RelatedTools from "@/components/RelatedTools";
 import AdSlot from "@/components/AdSlot";
+import ProductRecommend from "@/components/ProductRecommend";
 import { LEADER_TABLE } from "@/lib/leader";
 
 const TITLE = "リーダー号数⇔lb換算 早見表";
@@ -72,6 +73,14 @@ export default function LeaderPage() {
       <p className="mt-3 text-xs leading-relaxed text-sea-400">
         ※ 表示される数値は目安です。フロロカーボンとナイロンでも強度は異なり、メーカーによっても差があります。購入前は必ずパッケージ記載の数値を確認してください。
       </p>
+
+      <ProductRecommend
+        title="リーダーを探す"
+        links={[
+          { label: "フロロカーボンリーダーを探す", keyword: "リーダー フロロカーボン" },
+          { label: "ナイロンリーダーを探す", keyword: "リーダー ナイロン" },
+        ]}
+      />
 
       <AdSlot className="mt-6" />
 
