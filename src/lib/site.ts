@@ -109,6 +109,15 @@ export const TOOLS: ToolInfo[] = [
     href: "/tools/hook-size-guide",
     status: "available",
   },
+  {
+    key: "fishing-gear-guide",
+    title: "初心者向け 釣り道具診断",
+    shortTitle: "釣り道具診断",
+    description: "釣りたい魚・経験・予算を選ぶだけで、必要な道具の目安がわかります。",
+    href: "/tools/fishing-gear-guide",
+    status: "available",
+    icon: "🎣",
+  },
 ];
 
 /**

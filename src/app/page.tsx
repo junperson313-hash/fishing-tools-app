@@ -41,12 +41,34 @@ export default function Home() {
         </div>
       </section>
 
+      <section aria-labelledby="gear-guide-heading" className="mt-8">
+        <h2 id="gear-guide-heading" className="sr-only">
+          釣り道具診断
+        </h2>
+        <Link
+          href="/tools/fishing-gear-guide"
+          className="flex items-center justify-between gap-4 rounded-2xl border border-sea-200 bg-sea-50 p-5 shadow-sm transition-colors hover:border-sea-300 hover:bg-sea-100"
+        >
+          <div>
+            <p className="font-semibold text-sea-900">
+              🎣 初心者向け 釣り道具診断
+            </p>
+            <p className="mt-1 text-sm text-sea-600">
+              釣りたい魚・釣り方・予算から、必要な道具をまとめて提案します。
+            </p>
+          </div>
+          <span className="shrink-0 rounded-full bg-sea-600 px-4 py-2 text-xs font-medium text-white">
+            道具を選んでみる
+          </span>
+        </Link>
+      </section>
+
       <section aria-labelledby="tools-heading" className="mt-8">
         <h2 id="tools-heading" className="text-lg font-bold text-sea-900">
           ツール一覧
         </h2>
         <ul className="mt-4 grid gap-4">
-          {TOOLS.map((tool) => (
+          {TOOLS.filter((tool) => tool.key !== "fishing-gear-guide").map((tool) => (
             <li key={tool.key}>
               <Link
                 href={tool.href}

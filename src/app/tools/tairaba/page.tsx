@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ToolPageLayout from "@/components/tools/ToolPageLayout";
 import TairabaCalculator from "@/components/tools/TairabaCalculator";
 import AffiliateBlock from "@/components/AffiliateBlock";
@@ -65,6 +66,29 @@ export default function TairabaPage() {
         </p>
       }
       faqItems={FAQ_ITEMS}
+      extraSlot={
+        <section aria-labelledby="gear-guide-heading" className="mt-8">
+          <h2 id="gear-guide-heading" className="sr-only">
+            道具診断
+          </h2>
+          <Link
+            href="/tools/fishing-gear-guide?purpose=tairaba"
+            className="flex items-center justify-between gap-4 rounded-xl border border-sea-100 bg-white p-4 transition-colors hover:border-sea-300 hover:bg-sea-50"
+          >
+            <div>
+              <p className="font-semibold text-sea-800">
+                🎣 タイラバに必要な道具をまとめて見る
+              </p>
+              <p className="mt-1 text-sm text-sea-500">
+                ロッド・リール・ライン・ヘッドなど、タイラバを始めるのに必要な道具の目安がわかります。
+              </p>
+            </div>
+            <span className="shrink-0 text-sea-300" aria-hidden>
+              →
+            </span>
+          </Link>
+        </section>
+      }
     />
   );
 }
